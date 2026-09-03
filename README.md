@@ -12,6 +12,13 @@ paradigma penelitian ekonomi syariah.
 - `topics/` — 24 halaman detail (konteks & penjelasan, poin-poin kunci,
   literatur utama, relevansi & keterkaitan, rujukan jurnal), lengkap dengan
   navigasi sebelumnya/selanjutnya mengikuti urutan pedagogis modul.
+- `topics/bedah-*.html` — halaman **bedah rujukan**: kajian mendalam yang
+  membedah sumber-sumber sebuah topik satu per satu (identitas sumber, isi
+  pokok, bacaan analitis, kekuatan & keterbatasan), lalu menyintesiskannya dan
+  menambal apa yang tidak dibahas sumber-sumber itu. Halaman ini tidak muncul
+  di peta alur; ia ditaut dari halaman topik induknya lewat kartu `.deep-dive`
+  dan tautan `.pagenav`. Yang sudah ada:
+  `bedah-hakikat-objek-filsafat-ilmu.html` (topik 1.1).
 - `assets/style.css`, `assets/script.js` — gaya dan interaksi (filter modul)
   yang dipakai bersama seluruh halaman.
 
