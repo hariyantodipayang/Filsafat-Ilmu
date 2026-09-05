@@ -88,6 +88,8 @@ h1 em{ font-style:italic; font-weight:420; color:var(--teal); }
 .tab-btn.active .tab-sub{ color:var(--rust); }
 .tab-btn:nth-child(2).active{ color:var(--teal); border-color:var(--teal); }
 .tab-btn:nth-child(2).active .tab-sub{ color:var(--teal); }
+.tab-btn:nth-child(3).active{ color:var(--gold-strong); border-color:var(--gold-strong); }
+.tab-btn:nth-child(3).active .tab-sub{ color:var(--gold-strong); }
 .tab-panel[hidden]{ display:none; }
 
 /* ---------- RPS weekly view (Tab 1) ---------- */
@@ -234,9 +236,26 @@ a.week-link:hover .week-card h3{ color:var(--rust); }
 .work-card{
   background:var(--surface); border:1px solid var(--rule); border-radius:10px;
   padding:16px 18px; box-shadow:var(--shadow);
+  transition:border-color .15s ease, transform .15s ease;
 }
 .work-card .work-title{ font-family:"Fraunces",Georgia,serif; font-weight:560; font-size:16px; margin:0 0 4px; color:var(--ink); }
 .work-card .work-note{ font-size:13.5px; color:var(--ink-soft); line-height:1.55; margin:0; }
+
+/* ---------- Bedah Buku shelf (Tab 3) ---------- */
+.shelf-link{ text-decoration:none; color:inherit; display:block; margin-bottom:14px; }
+.shelf-link .work-card{ display:flex; align-items:flex-start; gap:14px; }
+.shelf-link:hover .work-card{ border-color:var(--gold-strong); transform:translateY(-1px); }
+.shelf-link:hover .work-title{ color:var(--gold-strong); }
+.shelf-num{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12px; color:var(--gold-strong);
+  border:1px solid var(--gold-strong); border-radius:50%; width:26px; height:26px;
+  display:flex; align-items:center; justify-content:center; flex:none; margin-top:2px;
+}
+.shelf-body{ min-width:0; }
+.shelf-slot{
+  border:1px dashed var(--rule); border-radius:10px; padding:16px 18px;
+  color:var(--ink-faint); font-size:14px; display:flex; align-items:center; gap:14px;
+}
 
 .ref-list{ display:flex; flex-direction:column; gap:2px; }
 .ref-item{

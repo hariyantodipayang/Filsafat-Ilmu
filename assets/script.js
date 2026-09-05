@@ -1,18 +1,27 @@
-// Top-level tab switcher (Alur RPS / Peta Alur) — only present on index.html.
+// Top-level tab switcher (Alur RPS / Peta Alur / Bedah Buku) — only present on index.html.
+// Supports #hash deep-linking so pages can link straight into a specific tab.
 (function () {
   var tabBtns = document.querySelectorAll('.tab-btn');
   var panels = document.querySelectorAll('.tab-panel');
   if (!tabBtns.length || !panels.length) return;
 
-  tabBtns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      tabBtns.forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      var target = btn.getAttribute('data-tab');
-      panels.forEach(function (p) { p.hidden = (p.getAttribute('data-panel') !== target); });
+  function activate(target, updateHash) {
+    tabBtns.forEach(function (b) {
+      var match = b.getAttribute('data-tab') === target;
+      b.classList.toggle('active', match);
+      b.setAttribute('aria-selected', match ? 'true' : 'false');
     });
+    panels.forEach(function (p) { p.hidden = (p.getAttribute('data-panel') !== target); });
+    if (updateHash && history.replaceState) { history.replaceState(null, '', '#' + target); }
+  }
+
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () { activate(btn.getAttribute('data-tab'), true); });
   });
+
+  var initial = (location.hash || '').replace('#', '');
+  var isValid = Array.prototype.some.call(tabBtns, function (b) { return b.getAttribute('data-tab') === initial; });
+  if (isValid) activate(initial, false);
 })();
 
 // Era filter — only present on index.html; no-ops safely on detail pages.
