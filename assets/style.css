@@ -1,41 +1,41 @@
-/* Sejarah & Pemikiran Ekonomi Islam — shared stylesheet
-   Palette: parchment / ink / brass-gold / verdigris teal / rust
+/* Filsafat Ilmu — shared stylesheet
+   Palette: cream-bright / indigo-ink / vivid amber / vivid turquoise / vivid coral (energetic revision)
    Type: Fraunces (display) + Public Sans (body) + IBM Plex Mono (data/labels) */
 
 :root{
-  --bg:#F3EFE3;
+  --bg:#FFF9EF;
   --surface:#FFFFFF;
-  --surface-soft:#EDE8D9;
-  --ink:#232A22;
-  --ink-soft:#5C6558;
-  --ink-faint:#8B9186;
-  --rule:#D9D2BC;
-  --gold:#8C6A22;
-  --gold-strong:#6E5219;
-  --teal:#215952;
-  --teal-soft:#DCE7E2;
-  --amber-soft:#F1E4C4;
-  --rust-soft:#EADAD0;
-  --rust:#8A4A34;
-  --shadow: 0 1px 2px rgba(35,42,34,.06), 0 6px 20px -8px rgba(35,42,34,.18);
+  --surface-soft:#FFEFD6;
+  --ink:#191A2E;
+  --ink-soft:#4B4A6B;
+  --ink-faint:#8583A0;
+  --rule:#F2DDB8;
+  --gold:#E29500;
+  --gold-strong:#B96E00;
+  --teal:#0C9B94;
+  --teal-soft:#CFF6F1;
+  --amber-soft:#FFE8AE;
+  --rust-soft:#FFDCCB;
+  --rust:#E8502A;
+  --shadow: 0 1px 2px rgba(25,26,46,.07), 0 8px 24px -8px rgba(226,149,0,.22);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#181B17; --surface:#20241F; --surface-soft:#262A23;
-    --ink:#EAE6D8; --ink-soft:#AFB5A6; --ink-faint:#7C8378;
-    --rule:#3A3F36; --gold:#D2A946; --gold-strong:#E7C46B;
-    --teal:#68A79C; --teal-soft:#25332F; --amber-soft:#332C1C;
-    --rust-soft:#33251F; --rust:#C97F60;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 26px -10px rgba(0,0,0,.55);
+    --bg:#141127; --surface:#1E1A38; --surface-soft:#271F45;
+    --ink:#FBF3FF; --ink-soft:#CBC3E8; --ink-faint:#8C84B0;
+    --rule:#3B3160; --gold:#FFC531; --gold-strong:#FFDD70;
+    --teal:#2FE6DE; --teal-soft:#123A3D; --amber-soft:#3A2A10;
+    --rust-soft:#3D2019; --rust:#FF7A50;
+    --shadow: 0 1px 2px rgba(0,0,0,.45), 0 10px 28px -10px rgba(47,230,222,.25);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#181B17; --surface:#20241F; --surface-soft:#262A23;
-  --ink:#EAE6D8; --ink-soft:#AFB5A6; --ink-faint:#7C8378;
-  --rule:#3A3F36; --gold:#D2A946; --gold-strong:#E7C46B;
-  --teal:#68A79C; --teal-soft:#25332F; --amber-soft:#332C1C;
-  --rust-soft:#33251F; --rust:#C97F60;
-  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 26px -10px rgba(0,0,0,.55);
+  --bg:#141127; --surface:#1E1A38; --surface-soft:#271F45;
+  --ink:#FBF3FF; --ink-soft:#CBC3E8; --ink-faint:#8C84B0;
+  --rule:#3B3160; --gold:#FFC531; --gold-strong:#FFDD70;
+  --teal:#2FE6DE; --teal-soft:#123A3D; --amber-soft:#3A2A10;
+  --rust-soft:#3D2019; --rust:#FF7A50;
+  --shadow: 0 1px 2px rgba(0,0,0,.45), 0 10px 28px -10px rgba(47,230,222,.25);
 }
 
 *{box-sizing:border-box;}
@@ -70,6 +70,54 @@ h1 em{ font-style:italic; font-weight:420; color:var(--teal); }
 .dek{ font-size:16.5px; line-height:1.6; color:var(--ink-soft); max-width:64ch; margin:0 0 20px; }
 .meta-row{ display:flex; flex-wrap:wrap; gap:8px 10px; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px; }
 .meta-chip{ border:1px solid var(--rule); border-radius:999px; padding:5px 12px; color:var(--ink-soft); }
+
+/* ---------- Top-level tabs (index only) ---------- */
+.tabs{ display:flex; gap:6px; margin:32px 0 8px; border-bottom:2px solid var(--rule); }
+.tab-btn{
+  font-family:"Fraunces",Georgia,serif; font-weight:560; font-size:16px;
+  border:none; background:none; color:var(--ink-faint); cursor:pointer;
+  padding:12px 18px 14px; border-bottom:3px solid transparent; margin-bottom:-2px;
+  transition:color .15s ease, border-color .15s ease;
+}
+.tab-btn .tab-sub{
+  display:block; font-family:"IBM Plex Mono",ui-monospace,monospace; font-weight:400;
+  font-size:11px; letter-spacing:.06em; text-transform:uppercase; margin-top:3px;
+}
+.tab-btn:hover{ color:var(--ink); }
+.tab-btn.active{ color:var(--rust); border-color:var(--rust); }
+.tab-btn.active .tab-sub{ color:var(--rust); }
+.tab-btn:nth-child(2).active{ color:var(--teal); border-color:var(--teal); }
+.tab-btn:nth-child(2).active .tab-sub{ color:var(--teal); }
+.tab-panel[hidden]{ display:none; }
+
+/* ---------- RPS weekly view (Tab 1) ---------- */
+.week-card{
+  position:relative; padding:16px 14px 16px 0; margin:0 -14px;
+  border-bottom:1px solid var(--rule);
+  display:grid; grid-template-columns:104px 1fr; gap:18px;
+  border-radius:10px;
+  transition:background .15s ease;
+}
+.week-card:last-child{ border-bottom:none; }
+a.week-link{ text-decoration:none; color:inherit; display:block; }
+a.week-link:hover .week-card{ background:var(--surface); }
+a.week-link:hover .week-card h3{ color:var(--rust); }
+.week-card::before{
+  content:""; position:absolute; left:-33px; top:24px; width:9px; height:9px;
+  border-radius:50%; background:var(--surface); border:2px solid var(--rust);
+}
+.week-card .period{ font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; font-size:13px; color:var(--rust); line-height:1.4; padding-top:2px; }
+.week-card h3{ font-family:"Fraunces",Georgia,serif; font-weight:520; font-size:18.5px; margin:0 0 6px; text-wrap:balance; transition:color .15s ease; }
+.week-card p{ margin:0 0 10px; font-size:14.5px; line-height:1.62; color:var(--ink-soft); max-width:60ch; }
+.week-card .also{ font-size:12.5px; color:var(--ink-faint); }
+.week-card .also a{ color:var(--teal); font-weight:600; text-decoration:none; }
+.week-card .also a:hover{ text-decoration:underline; }
+.tag.gap-tag{ background:var(--rust-soft); color:var(--rust); }
+.tag.exam-tag{ background:var(--surface-soft); color:var(--gold-strong); }
+.week-block-head{
+  display:flex; align-items:baseline; gap:14px; padding:20px 0 14px;
+  position:sticky; top:0; background:linear-gradient(var(--bg) 78%, transparent); z-index:2;
+}
 
 /* ---------- Filters (index only) ---------- */
 .filters{ display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 44px; }
